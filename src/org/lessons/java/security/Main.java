@@ -2,8 +2,9 @@ package org.lessons.java.security;
 
 import java.util.Scanner;
 
-public class PasswordGenerator {
+public class Main {
 	public static void main (String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 		// GESTIAMO IL NOME 
 		System.out.println("Ciao! Benvenuto nel generatore di password meno sicuro al mondo :C \n"
@@ -27,11 +28,13 @@ public class PasswordGenerator {
 		
 		System.out.println("Inserisci ora il tuo anno di nascita in numeri (ES: 2002)");
 		int bornYears = sc.nextInt();
-		int resolveBorn = bornDay + bornMonths + bornYears;		
-				
-		//FINE DEL PROGRAMMA E OUTPUT FINITO
-		System.out.println("La tua password estremamente insicura è: \n"
-				+ name + "-"+ lastname + "-" + favoriteColor + "-" + resolveBorn);
+		Persona persona = new Persona(name, lastname, favoriteColor, bornDay, bornMonths, bornYears);
+		sc.close();
+		
+		Password password = new Password();
+		String passwordResolve = password.Generator(persona);
+		
+		System.out.println(passwordResolve);
 		
 	}
 }
